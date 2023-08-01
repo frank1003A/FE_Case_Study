@@ -3,20 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "panda codegen",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-regular-svg-icons": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@types/node": "20.4.5",
     "@types/react": "18.2.17",
     "@types/react-dom": "18.2.7",
+    "@types/recharts": "^1.8.24",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
+    "hamburger-react": "^2.5.0",
     "next": "13.4.12",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-modern-drawer": "^1.2.0",
+    "recharts": "^2.7.2",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "@pandacss/dev": "^0.9.0"
   }
 }

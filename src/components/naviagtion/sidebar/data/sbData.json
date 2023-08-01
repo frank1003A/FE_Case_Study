@@ -1,0 +1,32 @@
+[
+    {
+      "title": "Dashboard",
+      "path": "/",
+      "icon": "/assets/sidebar/dashboard-icon.svg"
+    },
+    {
+      "title": "Orders",
+      "path": "/orders",
+      "icon": "/assets/sidebar/orders-icon.svg"
+    },
+    {
+      "title": "Customers",
+      "path": "/customers",
+      "icon": "/assets/sidebar/customers-icon.svg"
+    },
+    {
+      "title": "Inventory",
+      "path": "/inventory",
+      "icon": "/assets/sidebar/inventory-icon.svg"
+    },
+    {
+      "title": "Conversations",
+      "path": "/conversations",
+      "icon": "/assets/sidebar/conversations-icon.svg"
+    },
+    {
+      "title": "Settings",
+      "path": "/settings",
+      "icon": "/assets/sidebar/settings-icon.svg"
+    }
+  ]
