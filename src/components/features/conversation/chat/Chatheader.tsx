@@ -42,6 +42,9 @@ const Chatheader = ({ user }: ChatheaderProps) => {
             borderRadius: "8px",
             width: "auto",
             height: "auto",
+            maxH: {
+              mdDown: "40px",
+            },
           })}
         />
 
@@ -164,7 +167,7 @@ const Chatheader = ({ user }: ChatheaderProps) => {
           className={css({
             display: "flex",
             alignItems: "center",
-            gap: "1rem",
+            gap: "5px",
             color: "#8B8D97",
           })}
         >

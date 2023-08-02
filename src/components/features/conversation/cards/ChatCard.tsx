@@ -22,7 +22,10 @@ const ChatCard = ({ children, bgColor, hideBelow }: ChartCardProps) => {
         flexShrink: "0",
         borderRadius: "12px",
         overflow: "hidden",
-        h: "auto",
+        h: {
+          lgTo2xl: "auto",
+          mdDown: "100%",
+        },
         minW: "300px",
       })}
     >

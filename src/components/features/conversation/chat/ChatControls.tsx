@@ -1,6 +1,6 @@
 import {
   faFaceSmile,
-  faMessage,
+  faPaperPlane,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -98,7 +98,7 @@ const ChatControls = () => {
         >
           Send
           <span>
-            <FontAwesomeIcon icon={faMessage} />
+            <FontAwesomeIcon icon={faPaperPlane} />
           </span>
         </button>
       </div>

@@ -7,12 +7,11 @@ import Chat from "@/components/features/conversation/chat/Chat";
 import ChatBubble from "@/components/features/conversation/chat/ChatBubble";
 import ChatControls from "@/components/features/conversation/chat/ChatControls";
 import Chatheader from "@/components/features/conversation/chat/Chatheader";
-import { faComment } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { css } from "../../../styled-system/css";
 //
 import { useMediaQuery } from "@/hook/useMediaQuery";
-import { faClose } from "@fortawesome/free-solid-svg-icons";
+import { faMessage, faRemove } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
@@ -71,7 +70,7 @@ export default function Conversations() {
           })}
         >
           <Button>
-            <FontAwesomeIcon icon={faComment} />
+            <FontAwesomeIcon icon={faMessage} />
           </Button>
         </div>
       </div>
@@ -302,20 +301,22 @@ export default function Conversations() {
         <div
           className={css({
             pos: "absolute",
-            top: "20px",
+            top: "15px",
             right: "20px",
-            border: "1px solid #555",
-            borderRadius: "100%",
-            p: "8px",
+            border: "1px solid #F1F3F9",
+            borderRadius: "8px",
+            p: "15px",
             height: "20px",
             w: "20px",
+            fontSize: "20px",
+            color: "#555",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
           })}
           onClick={toggleDrawer}
         >
-          <FontAwesomeIcon icon={faClose} />
+          <FontAwesomeIcon icon={faRemove} />
         </div>
         <ChatCard>
           <Chatheader
