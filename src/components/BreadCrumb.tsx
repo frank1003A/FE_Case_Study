@@ -37,9 +37,13 @@ const BreadCrumb = () => {
           />
         </Link>
         <span>/</span>
-        <span>
-          {pathname === "/" ? "" : `${pathname.substring(1, pathname.length)}`}
-        </span>
+        <Link href={pathname}>
+          <span>
+            {pathname === "/"
+              ? ""
+              : `${pathname.substring(1, pathname.length)}`}
+          </span>
+        </Link>
       </div>
     </div>
   );

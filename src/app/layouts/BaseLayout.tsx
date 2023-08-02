@@ -20,6 +20,14 @@ const BaseLayout = ({ children }: BaseLayoutProps) => {
 
   const handleCollapse = () => setCollapse(!collapse);
 
+  const handleSbToggle = () => {
+    if (media) {
+      setToggleSb(!toggleSb);
+    } else {
+      return;
+    }
+  };
+
   useEffect(() => {
     /** reverse collapse on media */
     setCollapse(false);
@@ -34,7 +42,7 @@ const BaseLayout = ({ children }: BaseLayoutProps) => {
     >
       <Sidebar
         toggle={toggleSb}
-        toggleSb={() => setToggleSb(!toggleSb)}
+        toggleSb={() => handleSbToggle()}
         collapse={collapse}
       />
       <div
@@ -46,7 +54,7 @@ const BaseLayout = ({ children }: BaseLayoutProps) => {
       >
         <Header
           toggle={toggleSb}
-          toggleSb={() => setToggleSb(!toggleSb)}
+          toggleSb={() => handleSbToggle()}
           collapse={collapse}
           handleCollapse={handleCollapse}
         />
