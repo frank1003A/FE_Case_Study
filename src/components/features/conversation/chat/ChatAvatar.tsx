@@ -38,6 +38,8 @@ const ChatAvatar = ({ src, active, now }: ChatAvatarProps) => {
         height={48}
         className={css({
           borderRadius: "8px",
+          width: "auto",
+          height: "auto",
         })}
       />
     </div>

@@ -2,20 +2,20 @@ import { css } from "../../../../../styled-system/css";
 import ChatAvatar from "./ChatAvatar";
 
 interface ChatProps {
-  src: string;
   now?: boolean;
   active?: boolean;
   onClick?: () => void;
   hasBadge?: boolean;
   badgeValue?: number;
+  user: { name: string; message: string; avatar: string };
 }
 const Chat = ({
-  src,
   now,
   active,
   onClick,
   hasBadge,
   badgeValue,
+  user,
 }: ChatProps) => {
   return (
     <div
@@ -37,11 +37,11 @@ const Chat = ({
         },
         cursor: "pointer",
         pos: "relative",
-        transition: "all .3s ease-in-out",
+        transition: "all .1s ease-in-out",
       })}
       onClick={onClick}
     >
-      <ChatAvatar src={src} active={active} now={now} />
+      <ChatAvatar src={user.avatar} active={active} now={now} />
 
       <div
         className={css({
@@ -63,7 +63,7 @@ const Chat = ({
             whiteSpace: "nowrap",
           })}
         >
-          Jane Doe
+          {user.name}
         </span>
 
         <div
@@ -90,7 +90,7 @@ const Chat = ({
               whiteSpace: "nowrap",
             })}
           >
-            Hi, i want make enquiries about yo...
+            {user.message}
           </span>
           <span
             className={css({
