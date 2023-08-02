@@ -1,11 +1,19 @@
+"use client";
 import Card from "@/components/card/Card";
-import BarChartComponent from "@/components/charts/BarChart";
-import PieChartComponent from "@/components/charts/PieChart";
 import CardIcon from "@/components/features/dashboard/CardIcon";
 import CardMenu from "@/components/features/dashboard/CardMenu";
 import CardValue from "@/components/features/dashboard/CardValue";
 import Order from "@/components/order/Order";
+import dynamic from "next/dynamic";
 import { css } from "../../styled-system/css";
+
+const BChart = dynamic(() => import("../components/charts/BarChart"), {
+  ssr: false,
+});
+
+const PChart = dynamic(() => import("../components/charts/PieChart"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
@@ -201,7 +209,7 @@ export default function Home() {
             h: "100%",
           })}
         >
-          <PieChartComponent />
+          <PChart />
         </div>
       </Card>
 
@@ -418,7 +426,7 @@ export default function Home() {
             color: "#BEC0CA",
           })}
         >
-          <BarChartComponent />
+          <BChart />
         </div>
       </Card>
     </div>
