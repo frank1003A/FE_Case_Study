@@ -8,9 +8,12 @@ import { NavLinks } from "./types";
 interface NavLinksProps {
   link: NavLinks;
   collapse?: boolean;
+  badgeValue?: number;
 }
-const NavLink = ({ link, collapse }: NavLinksProps) => {
+const NavLink = ({ link, collapse, badgeValue }: NavLinksProps) => {
   const pathname = usePathname();
+
+  const activeLink = link.path === pathname;
   const hideOnCollapse = (el: React.JSX.Element | string) => {
     if (collapse) {
       return "";
@@ -32,16 +35,17 @@ const NavLink = ({ link, collapse }: NavLinksProps) => {
             alignItems: collapse ? "center" : "flex-start",
             gap: "10px",
             borderRadius: "12px",
-            bgColor: link.path === pathname ? "primary" : "inherit",
-            color: link.path === pathname ? "white" : "pfont",
+            bgColor: activeLink ? "primary" : "inherit",
+            color: activeLink ? "white" : "pfont",
             transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1)",
             fontSize: "14px",
             fontWeight: "400",
             fontStyle: "normal",
             lineHeight: "normal",
             _hover: {
-              bgColor: "rgba(94, 99, 102, 0.10)",
+              bgColor: activeLink ? "" : "rgba(94, 99, 102, 0.10)",
             },
+            pos: "relative",
           })}
         >
           <Image
@@ -50,13 +54,38 @@ const NavLink = ({ link, collapse }: NavLinksProps) => {
             width={20}
             height={20}
             className={css({
-              filter: link.path === pathname ? whiteFilter : greyFilter,
+              filter: activeLink ? whiteFilter : greyFilter,
               _groupHover: {
                 filter: whiteFilter,
               },
             })}
           />
           {hideOnCollapse(<span>{link.title}</span>)}
+          {badgeValue ? (
+            <span
+              className={css({
+                display: "flex",
+                w: "24px",
+                h: "24px",
+                p: "8px",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: "500px",
+                bgColor: "#FFCC91",
+                pos: collapse ? "absolute" : "relative",
+                top: collapse ? "-4px" : "",
+                right: collapse ? "-5px" : "",
+                fontSize: "12px",
+                fontWeight: "400",
+                fontStyle: "normal",
+                lineHeight: "normal",
+              })}
+            >
+              {badgeValue}
+            </span>
+          ) : (
+            ""
+          )}
         </div>
       </Link>
     </li>

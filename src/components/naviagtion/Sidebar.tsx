@@ -24,6 +24,27 @@ const Sidebar = ({ toggle, toggleSb, collapse }: SidebarProps) => {
     }
   };
 
+  const badgeUpdate = (currentIndex: number, index: number, value: number) => {
+    if (currentIndex === index) {
+      return value;
+    } else {
+      return;
+    }
+  };
+
+  const updateMultipleBadge = (
+    values: Array<{ c: number; i: number; v: number }>
+  ) => {
+    let value = 0;
+    values.forEach((v) => {
+      if (v.c === v.i) {
+        value = v.v;
+      }
+    });
+
+    return value;
+  };
+
   return (
     <>
       {/** overlay component - mobile only */}
@@ -144,9 +165,17 @@ const Sidebar = ({ toggle, toggleSb, collapse }: SidebarProps) => {
 
         <section>
           <NavLinks>
-            {sidebarData.map((link) => {
+            {sidebarData.map((link, idx) => {
               return (
-                <NavLink link={link} key={link.title} collapse={collapse} />
+                <NavLink
+                  link={link}
+                  key={link.title}
+                  collapse={collapse}
+                  badgeValue={updateMultipleBadge([
+                    { c: idx, i: 1, v: 3 },
+                    { c: idx, i: 4, v: 16 },
+                  ])}
+                />
               );
             })}
           </NavLinks>
