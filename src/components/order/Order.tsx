@@ -21,17 +21,18 @@ const Order = ({ item, date, status }: OrderProps) => {
           bgColor: "#F7F7FC",
         },
         cursor: "pointer",
-        borderRadius: "8px",
       })}
     >
       <Image
         src={item.img}
         alt={`${item.name}`}
-        width={49}
-        height={49}
+        width={40}
+        height={40}
         className={css({
           border: "1px solid #F1F3F9",
           borderRadius: "8px",
+          height: "auto",
+          width: "auto",
         })}
       />
       <div

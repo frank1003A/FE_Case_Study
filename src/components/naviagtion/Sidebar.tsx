@@ -171,6 +171,7 @@ const Sidebar = ({ toggle, toggleSb, collapse }: SidebarProps) => {
                   link={link}
                   key={link.title}
                   collapse={collapse}
+                  onLinkClick={toggleSb}
                   badgeValue={updateMultipleBadge([
                     { c: idx, i: 1, v: 3 },
                     { c: idx, i: 4, v: 16 },

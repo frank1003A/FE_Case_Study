@@ -9,8 +9,14 @@ interface NavLinksProps {
   link: NavLinks;
   collapse?: boolean;
   badgeValue?: number;
+  onLinkClick?: () => void;
 }
-const NavLink = ({ link, collapse, badgeValue }: NavLinksProps) => {
+const NavLink = ({
+  link,
+  collapse,
+  badgeValue,
+  onLinkClick,
+}: NavLinksProps) => {
   const pathname = usePathname();
 
   const activeLink = link.path === pathname;
@@ -26,7 +32,7 @@ const NavLink = ({ link, collapse, badgeValue }: NavLinksProps) => {
     "invert(32%) sepia(3%) saturate(1361%) hue-rotate(196deg) brightness(89%) contrast(81%)";
   const whiteFilter = "brightness(0) invert(1);";
   return (
-    <li>
+    <li onClick={onLinkClick}>
       <Link href={link.path}>
         <div
           className={css({
