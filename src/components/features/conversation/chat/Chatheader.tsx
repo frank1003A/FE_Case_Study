@@ -40,6 +40,8 @@ const Chatheader = ({ user }: ChatheaderProps) => {
           height={80}
           className={css({
             borderRadius: "8px",
+            width: "auto",
+            height: "auto",
           })}
         />
 

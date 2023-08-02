@@ -1,3 +1,5 @@
+import { faCheckCircle } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import { css } from "../../../../../styled-system/css";
 
@@ -31,11 +33,13 @@ const ChatBubble = ({ variant, item, time, content }: ChatBubbleProps) => {
           <Image
             src={item.img}
             alt={`${item.name}`}
-            width={49}
-            height={49}
+            width={40}
+            height={40}
             className={css({
               border: "1px solid #F1F3F9",
               borderRadius: "8px",
+              width: "auto",
+              height: "auto",
             })}
           />
           <div
@@ -124,6 +128,7 @@ const ChatBubble = ({ variant, item, time, content }: ChatBubbleProps) => {
           display: "flex",
           alignItems: "center",
           justifyContent: variant === "customer" ? "flex-start" : "flex-end",
+          gap: "5px",
         })}
       >
         <span
@@ -137,6 +142,13 @@ const ChatBubble = ({ variant, item, time, content }: ChatBubbleProps) => {
         >
           {time}
         </span>
+        {variant === "cca" ? (
+          <span>
+            <FontAwesomeIcon icon={faCheckCircle} color="#FFEAD1" />
+          </span>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
