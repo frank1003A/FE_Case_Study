@@ -122,19 +122,70 @@ export default function Conversations() {
             })}
           >
             <Chat
-              src="/assets/users/janedoe.png"
               active
-              now
               onClick={toggleDrawer}
+              now
+              user={{
+                avatar: "/assets/users/janedoe.png",
+                name: "Jane Doe",
+                message:
+                  "Hi, i would like to make inquiries about your product",
+              }}
             />
-            <Chat src="/assets/users/janethade.png" now />
-            <Chat src="/assets/users/kunleade.png" now />
-            <Chat src="/assets/users/janedoe.png" hasBadge badgeValue={2} />
-            <Chat src="/assets/users/janethade.png" hasBadge badgeValue={3} />
-            <Chat src="/assets/users/kunleade.png" />
-            <Chat src="/assets/users/janedoe.png" />
-            <Chat src="/assets/users/janethade.png" />
-            <Chat src="/assets/users/kunleade.png" />
+            <Chat
+              now
+              user={{
+                avatar: "/assets/users/janethade.png",
+                name: "Janeth Adekunle",
+                message:
+                  "Hi, i made an order and haven't recieved  after 2 days",
+              }}
+            />
+            <Chat
+              now
+              user={{
+                avatar: "/assets/users/kunleade.png",
+                name: "Kunle Adekunle",
+                message:
+                  "Hi, i made an order and haven't recieved  after 2 days",
+              }}
+            />
+            <Chat
+              hasBadge
+              badgeValue={2}
+              user={{
+                avatar: "/assets/users/janethade.png",
+                name: "Janeth Adekunle",
+                message:
+                  "Hi, i made an order and haven't recieved  after 2 days",
+              }}
+            />
+            <Chat
+              hasBadge
+              badgeValue={5}
+              user={{
+                avatar: "/assets/users/kunleade.png",
+                name: "Kunle Adekunle",
+                message:
+                  "Hi, i made an order and haven't recieved  after 2 days",
+              }}
+            />
+            <Chat
+              user={{
+                avatar: "/assets/users/janethade.png",
+                name: "Janeth Adekunle",
+                message:
+                  "Hi, i made an order and haven't recieved  after 2 days",
+              }}
+            />
+            <Chat
+              user={{
+                avatar: "/assets/users/kunleade.png",
+                name: "Kunle Adekunle",
+                message:
+                  "Hi, i made an order and haven't recieved  after 2 days",
+              }}
+            />
           </div>
         </ConversationCard>
         <ChatCard hideBelow="md">
