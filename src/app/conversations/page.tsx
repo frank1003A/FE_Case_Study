@@ -129,8 +129,8 @@ export default function Conversations() {
             />
             <Chat src="/assets/users/janethade.png" now />
             <Chat src="/assets/users/kunleade.png" now />
-            <Chat src="/assets/users/janedoe.png" />
-            <Chat src="/assets/users/janethade.png" />
+            <Chat src="/assets/users/janedoe.png" hasBadge badgeValue={2} />
+            <Chat src="/assets/users/janethade.png" hasBadge badgeValue={3} />
             <Chat src="/assets/users/kunleade.png" />
             <Chat src="/assets/users/janedoe.png" />
             <Chat src="/assets/users/janethade.png" />

@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { css } from "../../styled-system/css";
 
@@ -27,12 +28,14 @@ const BreadCrumb = () => {
           lineHeight: "normal",
         })}
       >
-        <Image
-          src={"/assets/home.svg"}
-          alt="breadcrumb-home-icon"
-          width={20}
-          height={20}
-        />
+        <Link href={"/"}>
+          <Image
+            src={"/assets/home.svg"}
+            alt="breadcrumb-home-icon"
+            width={20}
+            height={20}
+          />
+        </Link>
         <span>/</span>
         <span>
           {pathname === "/" ? "" : `${pathname.substring(1, pathname.length)}`}
