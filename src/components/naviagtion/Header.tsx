@@ -73,8 +73,7 @@ const Header = ({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              border: "1px solid",
-              borderColor: "stroke",
+              border: "1px solid transparent",
               borderRadius: "8px",
               padding: "0px",
               height: "35px",
@@ -82,6 +81,9 @@ const Header = ({
               color: "#555",
               transition: "all .3s ease-in-out",
               cursor: "pointer",
+              _hover: {
+                border: "1px solid #F1F3F9",
+              },
             })}
           >
             <FontAwesomeIcon icon={collapse ? faChevronRight : faChevronLeft} />
@@ -126,8 +128,7 @@ const Header = ({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              border: "1px solid",
-              borderColor: "stroke",
+              border: "1px solid #F1F3F9",
               borderRadius: "8px",
               padding: "0px",
               height: "35px",
