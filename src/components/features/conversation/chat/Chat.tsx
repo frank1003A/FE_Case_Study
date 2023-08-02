@@ -6,8 +6,17 @@ interface ChatProps {
   now?: boolean;
   active?: boolean;
   onClick?: () => void;
+  hasBadge?: boolean;
+  badgeValue?: number;
 }
-const Chat = ({ src, now, active, onClick }: ChatProps) => {
+const Chat = ({
+  src,
+  now,
+  active,
+  onClick,
+  hasBadge,
+  badgeValue,
+}: ChatProps) => {
   return (
     <div
       className={css({
@@ -114,6 +123,31 @@ const Chat = ({ src, now, active, onClick }: ChatProps) => {
           })}
         >
           new
+        </span>
+      ) : (
+        ""
+      )}
+      {!now && hasBadge && badgeValue ? (
+        <span
+          className={css({
+            display: "flex",
+            w: "24px",
+            h: "24px",
+            p: "8px",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: "500px",
+            bgColor: "#FFCC91",
+            pos: "absolute",
+            top: "10px",
+            right: "10px",
+            fontSize: "12px",
+            fontWeight: "400",
+            fontStyle: "normal",
+            lineHeight: "normal",
+          })}
+        >
+          {badgeValue}
         </span>
       ) : (
         ""
