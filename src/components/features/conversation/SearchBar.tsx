@@ -10,8 +10,7 @@ const SearchBar = () => {
         display: "flex",
         padding: "8px 16px",
         borderRadius: "8px",
-        border: "1px solid",
-        borderColor: "#CFD3D4",
+        border: "1px solid #F1F3F9",
         gap: "5px",
         width: "100%",
       })}
