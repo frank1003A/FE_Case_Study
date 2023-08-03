@@ -1,19 +1,20 @@
+"use client";
+import AbsoluteCenter from "@/components/AbsoluteCenter";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { BarLoader } from "react-spinners";
 import { css } from "../../styled-system/css";
 
 export default function Loading() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
   return (
-    <div
-      className={css({
-        w: "100%",
-        h: "100%",
-        pos: "relative",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      })}
-    >
+    <AbsoluteCenter>
       <div
         className={css({
           pos: "absolute",
@@ -48,8 +49,8 @@ export default function Loading() {
             <span>Metrix</span>
           </div>
         </div>
-        <BarLoader loading={true} color="#5570F1" />;
+        <BarLoader color="#5570F1" loading={isLoading} />;
       </div>
-    </div>
+    </AbsoluteCenter>
   );
 }
