@@ -20,6 +20,7 @@ interface HeaderProps {
   collapse?: boolean;
   handleCollapse?: () => void;
 }
+
 const Header = ({
   toggle,
   toggleSb,
