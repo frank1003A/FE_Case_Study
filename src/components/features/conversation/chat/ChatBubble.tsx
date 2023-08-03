@@ -108,8 +108,10 @@ const ChatBubble = ({ variant, item, time, content }: ChatBubbleProps) => {
               : "16px 16px 0px 16px",
           bgColor: variant === "customer" ? "primary" : "#FFEAD1",
           padding: "16px",
-          maxW: "50%",
-          w: "50%",
+          w: {
+            lgTo2xl: "50%",
+            mdDown: "80%",
+          },
           display: "flex",
           alignItems: "center",
           color: variant === "customer" ? "white" : "#1C1D22",
@@ -123,8 +125,10 @@ const ChatBubble = ({ variant, item, time, content }: ChatBubbleProps) => {
       </div>
       <div
         className={css({
-          maxW: "50%",
-          w: "50%",
+          w: {
+            lgTo2xl: "50%",
+            mdDown: "80%",
+          },
           display: "flex",
           alignItems: "center",
           justifyContent: variant === "customer" ? "flex-start" : "flex-end",

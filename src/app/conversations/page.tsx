@@ -41,7 +41,10 @@ export default function Conversations() {
     <div
       className={css({
         padding: "10px 16px",
-        height: "100%",
+        height: {
+          lgTo2xl: "100%",
+          mdDown: "100vh",
+        },
         display: "flex",
         flexDir: "column",
         gap: "1rem",
@@ -293,10 +296,6 @@ export default function Conversations() {
         onClose={toggleDrawer}
         direction="right"
         size={"100%"}
-        style={{
-          height: "100vh",
-          overflowY: "auto",
-        }}
       >
         <div
           className={css({
