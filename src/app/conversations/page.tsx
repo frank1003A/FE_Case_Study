@@ -43,7 +43,7 @@ export default function Conversations() {
         padding: "10px 16px",
         height: {
           lgTo2xl: "100%",
-          mdDown: "100vh",
+          mdDown: "100%",
         },
         display: "flex",
         flexDir: "column",
