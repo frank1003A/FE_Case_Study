@@ -1,6 +1,7 @@
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
+import Link from "next/link";
 import { css } from "../../../../../styled-system/css";
 
 interface ChatheaderProps {
@@ -38,6 +39,7 @@ const Chatheader = ({ user }: ChatheaderProps) => {
           alt={`user_${user.image}`}
           width={80}
           height={80}
+          loading="eager"
           className={css({
             borderRadius: "8px",
             width: "auto",
@@ -155,13 +157,15 @@ const Chatheader = ({ user }: ChatheaderProps) => {
           >
             New Customer
           </span>
-          <span
-            className={css({
-              color: "primary",
-            })}
-          >
-            View Profile
-          </span>
+          <Link href="/profile">
+            <span
+              className={css({
+                color: "primary",
+              })}
+            >
+              View Profile
+            </span>
+          </Link>
         </div>
         <div
           className={css({

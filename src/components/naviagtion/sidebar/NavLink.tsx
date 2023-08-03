@@ -38,7 +38,9 @@ const NavLink = ({
           className={css({
             display: "flex",
             padding: collapse ? "14px" : "16px 20px",
-            alignItems: collapse ? "center" : "flex-start",
+            alignItems: "center",
+            justifyContent: "flex-start",
+            textAlign: "center",
             gap: "10px",
             borderRadius: "12px",
             bgColor: activeLink ? "primary" : "inherit",

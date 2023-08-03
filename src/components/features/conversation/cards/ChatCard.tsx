@@ -17,14 +17,13 @@ const ChatCard = ({ children, bgColor, hideBelow }: ChartCardProps) => {
         display: "flex",
         flexDir: "column",
         padding: "0px",
-        gap: "10px",
         flex: "1 0 0",
         flexShrink: "0",
         borderRadius: "12px",
         overflow: "hidden",
         h: {
           lgTo2xl: "auto",
-          mdDown: "100%",
+          mdDown: "100vh",
         },
         minW: "300px",
       })}
