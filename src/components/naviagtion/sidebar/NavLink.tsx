@@ -50,10 +50,10 @@ const NavLink = ({
             fontWeight: "400",
             fontStyle: "normal",
             lineHeight: "normal",
+            pos: "relative",
             _hover: {
               bgColor: activeLink ? "" : "rgba(94, 99, 102, 0.10)",
             },
-            pos: "relative",
           })}
         >
           <Image

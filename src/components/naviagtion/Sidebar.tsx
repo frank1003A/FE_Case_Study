@@ -4,6 +4,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
+import { Fragment } from "react";
 import { css } from "../../../styled-system/css";
 import NavLink from "./sidebar/NavLink";
 import NavLinks from "./sidebar/NavLinks";
@@ -24,14 +25,6 @@ const Sidebar = ({ toggle, toggleSb, collapse }: SidebarProps) => {
     }
   };
 
-  const badgeUpdate = (currentIndex: number, index: number, value: number) => {
-    if (currentIndex === index) {
-      return value;
-    } else {
-      return;
-    }
-  };
-
   const updateMultipleBadge = (
     values: Array<{ c: number; i: number; v: number }>
   ) => {
@@ -46,7 +39,7 @@ const Sidebar = ({ toggle, toggleSb, collapse }: SidebarProps) => {
   };
 
   return (
-    <>
+    <Fragment>
       {/** overlay component - mobile only */}
       <div
         className={css({
@@ -63,7 +56,7 @@ const Sidebar = ({ toggle, toggleSb, collapse }: SidebarProps) => {
         })}
         onClick={toggleSb}
       ></div>
-      <article
+      <div
         role="navigation"
         className={css({
           maxW: "280px",
@@ -71,307 +64,275 @@ const Sidebar = ({ toggle, toggleSb, collapse }: SidebarProps) => {
             lgTo2xl: collapse ? "80px" : "280px",
             mdDown: "280px",
           },
-          h: "100vh",
-          height: "100vh",
-          overflow: "auto",
-          padding: "20px 16px",
           borderRight: "1px solid",
           borderRightColor: "stroke",
-          display: "flex",
-          flexDirection: "column",
-          gap: {
-            lgTo2xl: "3rem",
-            mdDown: "2rem",
-          },
           position: {
             lgTo2xl: "sticky",
             mdDown: "fixed",
           },
-          left: "0px",
-          top: "0px",
-          bottom: "0px",
+          left: "0",
+          top: "0",
+          bottom: "0",
           transition: "ease-in-out 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1)",
           transitionDuration: "250ms",
           transform: {
             lgOnly: "none",
-            /**
-             * mobile responsive property
-             */
             mdDown: toggle ? "translateX(0%)" : "translateX(-100%)",
           },
           bgColor: "white",
-          zIndex: "999",
+          zIndex: {
+            mdDown: "999",
+          },
+          height: "100vh",
         })}
       >
-        {/** Collapse and Toggle Button */}
         <div
           className={css({
             display: "flex",
-            alignItems: "center",
-            hideFrom: "md",
+            flexDirection: "column",
+            padding: {
+              lgTo2xl: collapse ? "20px 8px" : "20px 16px",
+              mdDown: "20px 16px",
+            },
+            gap: {
+              lgTo2xl: "3rem",
+              mdDown: "2rem",
+            },
+            alignItems: {
+              lgTo2xl: collapse ? "center" : "flex-start",
+            },
+            height: "100%",
+            overflowY: "auto",
+            overflowX: "hidden",
           })}
         >
-          {/** Mobile Responsive Component */}
+          {/** Collapse and Toggle Button */}
           <div
-            onClick={toggleSb}
             className={css({
               display: "flex",
-              alignSelf: "flex-end",
               alignItems: "center",
-              justifyContent: "center",
-              border: "1px solid",
-              borderColor: "stroke",
-              borderRadius: "8px",
-              padding: "0px",
-              height: "35px",
-              width: "35px",
-              color: "#555",
-              transition: "all .3s ease-in-out",
-              cursor: "pointer",
+              hideFrom: "md",
             })}
           >
-            <FontAwesomeIcon icon={faXmark} />
+            {/** Mobile Responsive Component */}
+            <div
+              onClick={toggleSb}
+              className={css({
+                display: "flex",
+                alignSelf: "flex-end",
+                alignItems: "center",
+                justifyContent: "center",
+                border: "1px solid",
+                borderColor: "stroke",
+                borderRadius: "8px",
+                padding: "0px",
+                height: "35px",
+                width: "35px",
+                color: "#555",
+                transition: "all .3s ease-in-out",
+                cursor: "pointer",
+              })}
+            >
+              <FontAwesomeIcon icon={faXmark} />
+            </div>
           </div>
-        </div>
 
-        {/** Metriks Logo */}
-        <div
-          className={css({
-            fontSize: "20px",
-            fontWeight: "700",
-            fontStyle: "normal",
-            lineHeight: "normal",
-          })}
-        >
-          <Link href={primaryLink}>
-            <div
-              className={css({
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "flex-start",
-                columnGap: ".5rem",
-              })}
-            >
-              <Image
-                src={"/assets/brand/metrics-logo.svg"}
-                alt="metrics-logo"
-                width={50}
-                height={50}
-              />
-              {hideOnCollapse(<span>Metrix</span>)}
-            </div>
-          </Link>
-        </div>
-
-        <section>
-          <NavLinks>
-            {sidebarData.map((link, idx) => {
-              return (
-                <NavLink
-                  link={link}
-                  key={link.title}
-                  collapse={collapse}
-                  onLinkClick={toggleSb}
-                  badgeValue={updateMultipleBadge([
-                    { c: idx, i: 1, v: 3 },
-                    { c: idx, i: 4, v: 16 },
-                  ])}
-                />
-              );
+          {/** Metriks Logo */}
+          <div
+            className={css({
+              fontSize: "20px",
+              fontWeight: "700",
+              fontStyle: "normal",
+              lineHeight: "normal",
             })}
-          </NavLinks>
-        </section>
+          >
+            <Link href={primaryLink}>
+              <div
+                className={css({
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "flex-start",
+                  columnGap: ".5rem",
+                })}
+              >
+                <Image
+                  src={"/assets/brand/metrics-logo.svg"}
+                  alt="metrics-logo"
+                  width={50}
+                  height={50}
+                />
+                {hideOnCollapse(<span>Metrix</span>)}
+              </div>
+            </Link>
+          </div>
 
-        <section
-          className={css({
-            display: "flex",
-            flexDir: "column",
-            gap: "20px",
-          })}
-        >
-          <Link href="/support">
-            <div
-              className={css({
-                display: "flex",
-                padding: "11px 16px",
-                gap: "10px",
-                borderRadius: "16px",
-                bgColor: "rgba(94, 99, 102, 0.10)",
-                fontSize: "14px",
-                fontWeight: "400",
-                fontStyle: "normal",
-                lineHeight: "normal",
-                alignItems: "center",
+          <section>
+            <NavLinks>
+              {sidebarData.map((link, idx) => {
+                return (
+                  <NavLink
+                    link={link}
+                    key={link.title}
+                    collapse={collapse}
+                    onLinkClick={toggleSb}
+                    badgeValue={updateMultipleBadge([
+                      { c: idx, i: 1, v: 3 },
+                      { c: idx, i: 4, v: 16 },
+                    ])}
+                  />
+                );
               })}
-            >
-              <Image
-                src={"/assets/sidebar/headphones.svg"}
-                alt="headphone-icon"
-                width={20}
-                height={20}
-              />
-              {hideOnCollapse(<span>Contact Support</span>)}
-            </div>
-          </Link>
-          {collapse ? (
-            <Link href="/upgrade">
+            </NavLinks>
+          </section>
+
+          <section
+            className={css({
+              display: "flex",
+              flexDir: "column",
+              gap: "20px",
+            })}
+          >
+            <Link href="/support">
               <div
                 className={css({
                   display: "flex",
                   padding: "11px 16px",
                   gap: "10px",
                   borderRadius: "16px",
-                  bgColor: "rgba(255, 204, 145, 0.20)",
+                  bgColor: "rgba(94, 99, 102, 0.10)",
                   fontSize: "14px",
                   fontWeight: "400",
                   fontStyle: "normal",
                   lineHeight: "normal",
                   alignItems: "center",
+                  justifyContent: {
+                    lgTo2xl: collapse ? "center" : "flex-start",
+                  },
                 })}
               >
                 <Image
-                  src={"/assets/sidebar/gift.svg"}
-                  alt="gift-icon"
-                  width={20}
-                  height={20}
-                />
-              </div>
-            </Link>
-          ) : (
-            <div
-              className={css({
-                display: "flex",
-                flexDirection: "column",
-                padding: "11px 33px 13px 20px",
-                borderRadius: "16px",
-                bgColor: "rgba(255, 204, 145, 0.20)",
-                rowGap: "10px",
-              })}
-            >
-              <div
-                className={css({
-                  display: "flex",
-                  gap: "10px",
-                  fontSize: "14px",
-                  fontWeight: "400",
-                  fontStyle: "normal",
-                  lineHeight: "normal",
-                  alignItems: "center",
-                  justifyContent: "center",
-                })}
-              >
-                <Image
-                  src={"/assets/sidebar/gift.svg"}
-                  alt="gift-icon"
-                  width={20}
-                  height={20}
-                />
-                <span>Free Gift Awaits You!</span>
-              </div>
-              <Link
-                href="/upgrade"
-                className={css({
-                  display: "flex",
-                  color: "#6E7079",
-                  fontSize: "12px",
-                  fontWeight: "400",
-                  fontStyle: "normal",
-                  lineHeight: "normal",
-                  alignItems: "center",
-                })}
-              >
-                <span>upgrade your account</span>
-                <Image
-                  src={"/assets/sidebar/chevdown.svg"}
+                  src={"/assets/sidebar/headphones.svg"}
                   alt="headphone-icon"
                   width={20}
                   height={20}
                 />
+                {hideOnCollapse(<span>Contact Support</span>)}
+              </div>
+            </Link>
+            {collapse ? (
+              <Link href="/upgrade">
+                <div
+                  className={css({
+                    display: "flex",
+                    padding: "11px 16px",
+                    gap: "10px",
+                    borderRadius: "16px",
+                    bgColor: "rgba(255, 204, 145, 0.20)",
+                    fontSize: "14px",
+                    fontWeight: "400",
+                    fontStyle: "normal",
+                    lineHeight: "normal",
+                    alignItems: "center",
+                    justifyContent: {
+                      lgTo2xl: collapse ? "center" : "flex-start",
+                    },
+                  })}
+                >
+                  <Image
+                    src={"/assets/sidebar/gift.svg"}
+                    alt="gift-icon"
+                    width={20}
+                    height={20}
+                  />
+                </div>
               </Link>
-            </div>
-          )}
-          <Link href={"/logout"}>
-            <div
-              className={css({
-                display: "flex",
-                padding: "11px 16px",
-                gap: "10px",
-                borderRadius: "16px",
-                fontSize: "14px",
-                fontWeight: "400",
-                fontStyle: "normal",
-                lineHeight: "normal",
-                alignItems: "center",
-                _hover: {
-                  bgColor: "rgba(94, 99, 102, 0.10)",
-                },
-              })}
-            >
-              <Image
-                src={"/assets/sidebar/logout.svg"}
-                alt="logout-icon"
-                width={30}
-                height={30}
-              />
-              {hideOnCollapse(<span>Logout</span>)}
-            </div>
-          </Link>
-        </section>
-      </article>
-    </>
+            ) : (
+              <div
+                className={css({
+                  display: "flex",
+                  flexDirection: "column",
+                  padding: "11px 33px 13px 20px",
+                  borderRadius: "16px",
+                  bgColor: "rgba(255, 204, 145, 0.20)",
+                  rowGap: "10px",
+                })}
+              >
+                <div
+                  className={css({
+                    display: "flex",
+                    gap: "10px",
+                    fontSize: "14px",
+                    fontWeight: "400",
+                    fontStyle: "normal",
+                    lineHeight: "normal",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  })}
+                >
+                  <Image
+                    src={"/assets/sidebar/gift.svg"}
+                    alt="gift-icon"
+                    width={20}
+                    height={20}
+                  />
+                  <span>Free Gift Awaits You!</span>
+                </div>
+                <Link
+                  href="/upgrade"
+                  className={css({
+                    display: "flex",
+                    color: "#6E7079",
+                    fontSize: "12px",
+                    fontWeight: "400",
+                    fontStyle: "normal",
+                    lineHeight: "normal",
+                    alignItems: "center",
+                  })}
+                >
+                  <span>upgrade your account</span>
+                  <Image
+                    src={"/assets/sidebar/chevdown.svg"}
+                    alt="headphone-icon"
+                    width={20}
+                    height={20}
+                  />
+                </Link>
+              </div>
+            )}
+            <Link href={"/logout"}>
+              <div
+                className={css({
+                  display: "flex",
+                  padding: "11px 16px",
+                  gap: "10px",
+                  borderRadius: "16px",
+                  fontSize: "14px",
+                  fontWeight: "400",
+                  fontStyle: "normal",
+                  lineHeight: "normal",
+                  alignItems: "center",
+                  _hover: {
+                    bgColor: "rgba(94, 99, 102, 0.10)",
+                  },
+                  justifyContent: {
+                    lgTo2xl: collapse ? "center" : "flex-start",
+                  },
+                })}
+              >
+                <Image
+                  src={"/assets/sidebar/logout.svg"}
+                  alt="logout-icon"
+                  width={30}
+                  height={30}
+                />
+                {hideOnCollapse(<span>Logout</span>)}
+              </div>
+            </Link>
+          </section>
+        </div>
+      </div>
+    </Fragment>
   );
 };
 
 export default Sidebar;
-
-/** <div
-            className={css({
-              display: "flex",
-              flexDirection: "column",
-              padding: "11px 33px 13px 20px",
-              borderRadius: "16px",
-              bgColor: "rgba(255, 204, 145, 0.20)",
-              rowGap: "10px",
-            })}
-          >
-            <div
-              className={css({
-                display: "flex",
-                gap: "10px",
-                fontSize: "14px",
-                fontWeight: "400",
-                fontStyle: "normal",
-                lineHeight: "normal",
-                alignItems: "center",
-                justifyContent: "center",
-              })}
-            >
-              <Image
-                src={"/assets/sidebar/gift.svg"}
-                alt="gift-icon"
-                width={20}
-                height={20}
-              />
-              <span>Free Gift Awaits You!</span>
-            </div>
-            <Link
-              href="/upgrade"
-              className={css({
-                display: "flex",
-                color: "#6E7079",
-                fontSize: "12px",
-                fontWeight: "400",
-                fontStyle: "normal",
-                lineHeight: "normal",
-                alignItems: "center",
-              })}
-            >
-              <span>upgrade your account</span>
-              <Image
-                src={"/assets/sidebar/chevdown.svg"}
-                alt="headphone-icon"
-                width={20}
-                height={20}
-              />
-            </Link>
-          </div> */
