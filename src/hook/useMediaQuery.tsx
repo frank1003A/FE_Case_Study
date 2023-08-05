@@ -5,7 +5,9 @@ type Sizes = {
   [key: string]: string;
 };
 
-export const useMediaQuery = (screen: string) => {
+type BreakPoints = "xsm" | "sm" | "md" | "lg" | "xl" | "xxl" | "2xl";
+
+export const useMediaQuery = (screen: BreakPoints) => {
   const [matches, setMatches] = useState(false);
 
   const sizes: Sizes = {
