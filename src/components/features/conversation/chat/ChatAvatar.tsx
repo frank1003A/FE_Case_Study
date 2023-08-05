@@ -1,5 +1,7 @@
 "use client";
 import Image from "next/image";
+import { useState } from "react";
+import { ClipLoader } from "react-spinners";
 import { css } from "../../../../../styled-system/css";
 
 interface ChatAvatarProps {
@@ -8,8 +10,30 @@ interface ChatAvatarProps {
   now?: boolean;
 }
 const ChatAvatar = ({ src, active, now }: ChatAvatarProps) => {
+  const [load, setLoaded] = useState(true);
+
   return (
-    <>
+    <div className={css({ pos: "relative" })}>
+      {load ? (
+        <div
+          className={css({
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            pos: "absolute",
+            top: "0",
+            left: "0",
+            w: "100%",
+            h: "100%",
+            bgColor: "inherit",
+            zIndex: "2",
+          })}
+        >
+          <ClipLoader color="#5570F1" size={30} />
+        </div>
+      ) : (
+        ""
+      )}
       <div
         className={css({
           pos: "relative",
@@ -20,6 +44,8 @@ const ChatAvatar = ({ src, active, now }: ChatAvatarProps) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          zIndex: "1",
+          opacity: load ? "0" : "1",
         })}
       >
         <span
@@ -42,6 +68,7 @@ const ChatAvatar = ({ src, active, now }: ChatAvatarProps) => {
           width={48}
           height={48}
           loading="eager"
+          onLoad={() => setLoaded(false)}
           className={css({
             borderRadius: "8px",
             width: "auto",
@@ -49,7 +76,7 @@ const ChatAvatar = ({ src, active, now }: ChatAvatarProps) => {
           })}
         />
       </div>
-    </>
+    </div>
   );
 };
 

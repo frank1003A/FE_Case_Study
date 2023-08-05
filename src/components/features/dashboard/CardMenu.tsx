@@ -1,4 +1,5 @@
-import Image from "next/image";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { css } from "../../../../styled-system/css";
 
@@ -13,21 +14,20 @@ const CardMenu = ({ options }: cardMenuProps) => {
       className={css({
         display: "flex",
         alignItems: "center",
-        padding: "5px 0px",
+        padding: "5px",
         gap: "7px",
         borderRadius: "8px",
         cursor: "pointer",
-        color: "#BEC0CA",
+        color: "pfont",
+        _hover: {
+          bgColor: "#eee",
+        },
+        fontWeight: "400",
       })}
     >
       <span role="menuitem">{options[0].title}</span>
       <span>
-        <Image
-          src={"/assets/chevdown.svg"}
-          alt="dropdown-arrow"
-          width={20}
-          height={20}
-        />
+        <FontAwesomeIcon icon={faChevronDown} />
       </span>
     </div>
   );
