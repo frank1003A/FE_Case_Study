@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
+import BaseLayout from "../components/layouts/BaseLayout";
 import "./globals.css";
-import BaseLayout from "./layouts/BaseLayout";
 
 // The following import prevents a Font Awesome icon server-side rendering bug,
 // where the icons flash from a very large icon down to a properly sized one:

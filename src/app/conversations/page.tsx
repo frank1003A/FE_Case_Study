@@ -64,7 +64,10 @@ export default function Conversations() {
             hideBelow: "md",
           })}
         >
-          <Button>New Message</Button>
+          <Button>
+            <FontAwesomeIcon icon={faMessage} />
+            New Message
+          </Button>
         </div>
         {/** Mobile Button */}
         <div

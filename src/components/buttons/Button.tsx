@@ -11,6 +11,8 @@ const Button = ({ children }: ButtonProps) => {
       className={css({
         display: "flex",
         alignItems: "center",
+        justifyContent: "center",
+        gap: "10px",
         bgColor: "primary",
         flexShrink: "0",
         color: "#FFFFFF",
